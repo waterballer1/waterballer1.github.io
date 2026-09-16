@@ -1,10 +1,9 @@
 /* =========================================================
    WEBSITE TRACKER
-   Google Apps Script endpoint
 ========================================================= */
 
 const TRACKING_URL =
-  "https://script.google.com/macros/s/AKfycbwqGxnBTWbRuOG-l2xVRGOP2PVn4X63KjFtIY76ft3_pDDDqCij9OYl6VcQf6hrCqdJ/exec";
+  "https://script.google.com/macros/s/AKfycbzNhUAAxHMWWW5uOweh0lSJlrgY-mUA9Crr__6cmXU2KhFIg2HCNb6wI0lx9luqQ_Ft/exec";
 
 
 /* =========================================================
@@ -12,7 +11,7 @@ const TRACKING_URL =
 ========================================================= */
 
 let sessionId =
-  sessionStorage.getItem("new_site_session_id");
+  sessionStorage.getItem("website_session_id");
 
 if (!sessionId) {
 
@@ -21,17 +20,18 @@ if (!sessionId) {
     "-" +
     Math.random()
       .toString(36)
-      .slice(2);
+      .substring(2);
 
   sessionStorage.setItem(
-    "new_site_session_id",
+    "website_session_id",
     sessionId
   );
+
 }
 
 
 /* =========================================================
-   SEND EVENT TO GOOGLE SHEETS
+   SEND TRACKING DATA
 ========================================================= */
 
 function track(
@@ -40,83 +40,32 @@ function track(
   value = ""
 ) {
 
-  if (!TRACKING_URL) {
-    return;
-  }
-
-
-  const params =
+  const data =
     new URLSearchParams();
 
-
-  params.set(
+  data.append(
     "session_id",
     sessionId
   );
 
-
-  params.set(
+  data.append(
     "event",
     event
   );
 
-
-  params.set(
+  data.append(
     "field",
     field
   );
 
-
-  params.set(
+  data.append(
     "value",
     String(value ?? "")
   );
 
 
   /*
-    First attempt:
-    sendBeacon is useful when the browser is
-    about to navigate to another page.
-  */
-
-  try {
-
-    const blob =
-      new Blob(
-        [
-          params.toString()
-        ],
-        {
-          type:
-            "application/x-www-form-urlencoded;charset=UTF-8"
-        }
-      );
-
-
-    if (
-      navigator.sendBeacon &&
-      navigator.sendBeacon(
-        TRACKING_URL,
-        blob
-      )
-    ) {
-
-      return;
-
-    }
-
-  } catch (error) {
-
-    /*
-      Ignore beacon errors and use fetch fallback.
-    */
-
-  }
-
-
-  /*
-    Fallback:
-    normal POST request.
+    Send as a normal URL-encoded POST.
   */
 
   try {
@@ -125,18 +74,28 @@ function track(
       TRACKING_URL,
       {
         method: "POST",
+
         mode: "no-cors",
-        body: params,
+
+        headers: {
+          "Content-Type":
+            "application/x-www-form-urlencoded;charset=UTF-8"
+        },
+
+        body: data,
+
         keepalive: true
+
       }
     ).catch(
-      () => {}
+      function () {}
     );
 
   } catch (error) {
 
     /*
-      Tracking should never break the website itself.
+      Tracking errors must never
+      break the website.
     */
 
   }
@@ -145,48 +104,30 @@ function track(
 
 
 /* =========================================================
-   AUTOMATIC BUTTON / LINK TRACKING
+   AUTOMATIC BUTTON TRACKING
 ========================================================= */
-
-/*
-  This catches every clickable button automatically.
-
-  Therefore, even if we forget to manually write:
-
-      track(...)
-
-  for a button on a page, the click still gets logged.
-*/
 
 document.addEventListener(
   "click",
   function (event) {
 
-    const clickable =
+    const element =
       event.target.closest(
         "button, input[type='button'], input[type='submit'], a"
       );
 
 
-    if (!clickable) {
+    if (!element) {
       return;
     }
 
 
-    /*
-      Try to get a useful name for the clicked element.
-    */
-
     let label =
-      clickable.innerText ||
-      clickable.value ||
-      clickable.getAttribute(
-        "aria-label"
-      ) ||
-      clickable.getAttribute(
-        "title"
-      ) ||
-      "Unnamed clickable element";
+      element.innerText ||
+      element.value ||
+      element.getAttribute("aria-label") ||
+      element.getAttribute("title") ||
+      "Unnamed element";
 
 
     label =
@@ -196,20 +137,19 @@ document.addEventListener(
 
 
     /*
-      Record the page where the click happened.
+      Record which page the click happened on.
     */
-
-    const page =
-      window.location.pathname ||
-      "index.html";
-
 
     track(
       "Button Clicked",
       "page",
-      page
+      window.location.pathname
     );
 
+
+    /*
+      Record exactly what was clicked.
+    */
 
     track(
       "Button Clicked",
@@ -230,15 +170,11 @@ window.addEventListener(
   "load",
   function () {
 
-    const page =
-      window.location.pathname ||
-      "index.html";
-
-
     track(
       "Website Opened",
       "page",
-      page
+      window.location.pathname ||
+        "index.html"
     );
 
   }
