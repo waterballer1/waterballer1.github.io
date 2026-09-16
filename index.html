@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hello, what's up?</title>
+<link rel="stylesheet" href="style.css">
+<script src="tracker.js"></script>
+</head>
+<body>
+<div class="bg-phrases" aria-hidden="true">
+  <span class="ph p01">Salut, jolie</span>
+  <span class="ph p02">Hola, bonita</span>
+  <span class="ph p03">Ciao, bella</span>
+  <span class="ph p04">Hallo, Schöne</span>
+  <span class="ph p05">Oi, bonita</span>
+  <span class="ph p06">ねえ、かわいいね</span>
+  <span class="ph p07">안녕, 예쁜아</span>
+  <span class="ph p08">مرحبًا يا جميلة</span>
+  <span class="ph p09">Привет, красавица</span>
+  <span class="ph p10">Selam, güzelim</span>
+  <span class="ph p11">Γεια σου, όμορφη</span>
+  <span class="ph p12">Hej, piękna</span>
+  <span class="ph p13">Hé, knapperd</span>
+  <span class="ph p14">Hei, vakre</span>
+  <span class="ph p15">Bună, frumoaso</span>
+  <span class="ph p16">Hej, vackra</span>
+  <span class="ph p17">สวัสดี คนสวย</span>
+  <span class="ph p18">Olá, linda</span>
+  <span class="ph p19">Ciao, carina</span>
+  <span class="ph p20">Salut, belle</span>
+</div>
+
+<div class="page">
+<main class="card intro-card fade-in">
+<div class="icon">🙂</div>
+<p class="eyebrow">Okay, fair enough.</p>
+<h1>Okay, fair enough, but I am still gonna trouble you. 😭</h1>
+
+<p>
+So, first of all, I messed up while writing the code for the first website.
+There was a part where, after you said <b>"No, you're a creep,"</b>,
+the page was supposed to say <b>"Okay, fair enough, but I am still gonna trouble you."</b>
+</p>
+
+<p>
+Somehow I managed to interchange some of the responses, and both of them
+ended up going to some very weird answers. I genuinely don't even know
+what kind of shit I was smoking when I wrote that part.
+</p>
+
+<p>
+Anyway, I had already put a stupid amount of effort into making this,
+and I felt like it would be a waste not to send it out. So here we are.
+</p>
+
+<p>
+One actual warning this time:
+<b>if you're finding this fun-creepy, then and only then should you click Proceed.</b>
+If you're not enjoying it, you can leave. Completely your choice.
+</p>
+
+<p>
+There is also a <b>"Creepy, creepy"</b> button. That is the escape route.
+I couldn't make the website delete itself, but I tried. It was genuinely heinous.
+</p>
+
+<p>
+So yeah. Click Proceed and see what ridiculous thing I made next,
+or click Creepy, creepy and I'll stop.
+</p>
+
+<div class="choice-row">
+<button id="proceed">Proceed</button>
+<button id="creepy" class="secondary">Creepy, creepy</button>
+</div>
+</main>
+</div>
+
+<script>
+document.getElementById("proceed").addEventListener("click",()=> {
+  track("Button Clicked","button","Proceed");
+  location.href="game1.html";
+});
+document.getElementById("creepy").addEventListener("click",()=> {
+  track("Button Clicked","button","Creepy, creepy");
+  location.href="goodbye.html";
+});
+</script>
+</body>
+</html>

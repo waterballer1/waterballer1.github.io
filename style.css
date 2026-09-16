@@ -1,0 +1,385 @@
+/* ===============================
+   SHARED THEME
+================================ */
+
+:root{
+  --pink:#f6c9d2;
+  --cream:#fff7ea;
+  --burgundy:#5e2032;
+  --button:#e99aaa;
+}
+
+*{box-sizing:border-box}
+
+html,body{
+  margin:0;
+  min-height:100%;
+}
+
+body{
+  min-height:100vh;
+  overflow-x:hidden;
+  background:var(--pink);
+  color:var(--burgundy);
+  font-family:Georgia,"Times New Roman",serif;
+}
+
+.page{
+  width:100%;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:22px;
+}
+
+.card{
+  width:min(760px,94vw);
+  max-height:94vh;
+  overflow:auto;
+  padding:clamp(28px,5vw,48px);
+  background:var(--cream);
+  border:1px solid rgba(255,255,255,.65);
+  border-radius:28px;
+  box-shadow:0 24px 70px rgba(94,32,50,.16);
+  text-align:center;
+}
+
+.intro-card{
+  width:min(820px,94vw);
+}
+
+.icon{
+  font-size:2.2rem;
+  margin-bottom:10px;
+}
+
+.eyebrow{
+  margin:0 0 9px;
+  font-size:.82rem;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  opacity:.65;
+}
+
+h1,h2{
+  margin:0 0 18px;
+  line-height:1.1;
+}
+
+h1{font-size:clamp(2rem,5vw,3.2rem)}
+h2{font-size:clamp(1.4rem,3.5vw,2rem)}
+
+p{
+  margin:0 0 16px;
+  font-size:1.03rem;
+  line-height:1.62;
+}
+
+.choice-row,
+.game-actions{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:20px;
+}
+
+button{
+  appearance:none;
+  border:0;
+  border-radius:14px;
+  padding:13px 20px;
+  min-width:145px;
+  background:var(--button);
+  color:#4b1b29;
+  font:inherit;
+  font-weight:700;
+  cursor:pointer;
+  box-shadow:0 7px 17px rgba(94,32,50,.12);
+  transition:transform .18s ease,box-shadow .18s ease;
+}
+
+button:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 22px rgba(94,32,50,.15);
+}
+
+button:disabled{
+  opacity:.42;
+  cursor:not-allowed;
+  transform:none!important;
+}
+
+.secondary{
+  background:rgba(255,255,255,.65);
+}
+
+.notice{
+  min-height:1.4em;
+  margin-top:14px;
+  font-size:.92rem;
+  opacity:.72;
+}
+
+.fade-in{
+  animation:fadeIn .45s ease both;
+}
+
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(14px) scale(.98)}
+  to{opacity:1;transform:none}
+}
+
+/* Background phrases */
+
+.bg-phrases{
+  position:fixed;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  overflow:hidden;
+}
+
+.bg-phrases span{
+  position:absolute;
+  color:rgba(94,32,50,.43);
+  font-size:.78rem;
+  white-space:nowrap;
+}
+
+/* ===============================
+   GAME 1
+================================ */
+
+.game-card{
+  width:min(980px,94vw);
+}
+
+.game-stats{
+  margin:8px 0 16px;
+  font-size:.92rem;
+  opacity:.7;
+  font-weight:700;
+}
+
+.grid-wrapper{
+  width:min(720px,100%);
+  margin:18px auto 0;
+  padding:14px;
+  border-radius:24px;
+  background:rgba(255,255,255,.28);
+  border:2px solid rgba(94,32,50,.08);
+}
+
+.game-grid{
+  width:100%;
+  aspect-ratio:4/3;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  grid-template-rows:repeat(3,1fr);
+  gap:13px;
+}
+
+.grid-cell{
+  width:100%;
+  height:100%;
+  min-width:0;
+  min-height:0;
+  padding:0;
+  border-radius:50%;
+  background:rgba(94,32,50,.085);
+  border:1px solid rgba(94,32,50,.08);
+  box-shadow:none;
+  font-size:clamp(1rem,2.1vw,1.35rem);
+}
+
+.grid-cell.active{
+  background:var(--button);
+  box-shadow:0 10px 25px rgba(94,32,50,.17);
+}
+
+/* ===============================
+   REACTION TEST / MINI GAME 2
+================================ */
+
+.reaction-area{
+  width:min(720px,100%);
+  height:min(48vh,400px);
+  min-height:300px;
+  position:relative;
+  margin:18px auto 0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:24px;
+  background:rgba(255,255,255,.28);
+  border:2px solid rgba(94,32,50,.08);
+}
+
+#reactionMessage{
+  font-size:clamp(1.15rem,2.8vw,1.8rem);
+  font-weight:700;
+}
+
+.reaction-button{
+  position:absolute;
+  width:140px;
+  height:140px;
+  min-width:0;
+  padding:0;
+  border-radius:50%;
+}
+
+.reaction-button.hidden{
+  display:none;
+}
+
+.reaction-results{
+  width:min(680px,100%);
+  margin:12px auto 0;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+  font-size:.88rem;
+}
+
+.reaction-results div{
+  padding:9px;
+  border-radius:12px;
+  background:rgba(255,255,255,.38);
+}
+
+/* ===============================
+   MINI GAME 3
+================================ */
+
+.coin{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:90px;
+  margin:22px 0;
+  font-size:5rem;
+}
+
+.coin-flip{
+  animation:coinFlip .7s ease;
+}
+
+@keyframes coinFlip{
+  0%{transform:rotateY(0)}
+  50%{transform:rotateY(720deg) scale(1.08)}
+  100%{transform:rotateY(1440deg)}
+}
+
+.score{
+  font-weight:700;
+}
+
+/* Mobile */
+
+@media(max-width:700px){
+  .page{padding:12px}
+  .card{
+    width:96vw;
+    padding:24px 16px;
+    max-height:95vh;
+  }
+
+  .grid-wrapper{padding:9px}
+  .game-grid{gap:8px}
+
+  .reaction-area{
+    height:47vh;
+    min-height:290px;
+  }
+
+  .reaction-button{
+    width:110px;
+    height:110px;
+  }
+
+  .reaction-results{
+    grid-template-columns:1fr;
+  }
+
+  .game-actions{
+    gap:8px;
+  }
+
+  .game-actions button{
+    min-width:125px;
+  }
+}
+
+
+/* =========================================================
+   FINAL FIX — SCATTERED MULTILINGUAL BACKGROUND
+========================================================= */
+
+.bg-phrases{
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  pointer-events:none;
+  z-index:0;
+}
+
+.bg-phrases .ph{
+  position:absolute;
+  display:block;
+  width:max-content;
+  color:rgba(94,32,50,.48);
+  font-size:.78rem;
+  line-height:1;
+  white-space:nowrap;
+  user-select:none;
+  animation:bgDrift 12s ease-in-out infinite alternate;
+}
+
+.bg-phrases .p01{left:4%;top:7%;transform:rotate(-8deg)}
+.bg-phrases .p02{left:76%;top:10%;transform:rotate(7deg)}
+.bg-phrases .p03{left:15%;top:21%;transform:rotate(5deg)}
+.bg-phrases .p04{left:84%;top:26%;transform:rotate(-6deg)}
+.bg-phrases .p05{left:3%;top:38%;transform:rotate(4deg)}
+.bg-phrases .p06{left:72%;top:41%;transform:rotate(-7deg)}
+.bg-phrases .p07{left:8%;top:55%;transform:rotate(-4deg)}
+.bg-phrases .p08{left:81%;top:58%;transform:rotate(6deg)}
+.bg-phrases .p09{left:2%;top:71%;transform:rotate(7deg)}
+.bg-phrases .p10{left:74%;top:74%;transform:rotate(-5deg)}
+.bg-phrases .p11{left:26%;top:12%;transform:rotate(-3deg)}
+.bg-phrases .p12{left:51%;top:18%;transform:rotate(5deg)}
+.bg-phrases .p13{left:22%;top:34%;transform:rotate(-6deg)}
+.bg-phrases .p14{left:54%;top:33%;transform:rotate(7deg)}
+.bg-phrases .p15{left:19%;top:65%;transform:rotate(4deg)}
+.bg-phrases .p16{left:47%;top:69%;transform:rotate(-4deg)}
+.bg-phrases .p17{left:34%;top:84%;transform:rotate(6deg)}
+.bg-phrases .p18{left:60%;top:86%;transform:rotate(-5deg)}
+.bg-phrases .p19{left:42%;top:51%;transform:rotate(4deg)}
+.bg-phrases .p20{left:58%;top:6%;transform:rotate(-3deg)}
+
+@keyframes bgDrift{
+  from{margin-top:-4px}
+  to{margin-top:6px}
+}
+
+/* Keep the opening card reliably centered. */
+.intro-card{
+  margin:auto;
+  align-self:center;
+}
+
+.page > .card{
+  margin-left:auto;
+  margin-right:auto;
+}
+
+@media(max-width:700px){
+  .bg-phrases .ph{
+    font-size:.65rem;
+  }
+}

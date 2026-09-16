@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cons</title>
+<link rel="stylesheet" href="style.css">
+<script src="tracker.js"></script>
+</head>
+<body>
+<div class="page">
+<main class="card fade-in">
+<div class="icon">👀</div>
+<p class="eyebrow">Cons</p>
+<h1>CONS</h1>
+<p>I don't have them. 😭</p>
+<div class="choice-row">
+<button id="pros">Pros →</button>
+</div>
+</main>
+</div>
+
+<script>
+document.getElementById("pros").addEventListener("click",()=>{
+  track("Button Clicked","button","Pros");
+  location.href="eyes-pros.html";
+});
+</script>
+</body>
+</html>

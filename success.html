@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Okay, let's talk.</title>
+<link rel="stylesheet" href="style.css">
+<script src="tracker.js"></script>
+</head>
+<body>
+<div class="page">
+<main class="card fade-in">
+<div class="icon">🙂❤️</div>
+<p class="eyebrow">Okay, okay.</p>
+<h1>Okay, let's talk.</h1>
+<p>
+You actually made it all the way through that ridiculous thing.
+So yeah, I guess I don't have to keep trying to convince you anymore. 😭
+</p>
+<p>But apparently I still have one more thing to say.</p>
+
+<div class="choice-row">
+<button id="oneMore">Okay, yes, I have one more thing to say →</button>
+</div>
+</main>
+</div>
+
+<script>
+document.getElementById("oneMore").addEventListener("click",()=>{
+  track("Button Clicked","button","Okay, yes, I have one more thing to say");
+  location.href="eyes.html";
+});
+</script>
+</body>
+</html>

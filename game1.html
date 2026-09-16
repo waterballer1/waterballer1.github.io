@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mini Game 1</title>
+<link rel="stylesheet" href="style.css">
+<script src="tracker.js"></script>
+</head>
+<body>
+<div class="page">
+<main class="card game-card fade-in">
+<div class="icon">🎯</div>
+<p class="eyebrow">Mini Game 1</p>
+<h1>Find the NO.</h1>
+
+<p>
+Ten rounds. Twelve large circles. One of them says <b>NO</b>.
+Find it and click it. Wrong clicks count as misses.
+</p>
+
+<div class="game-stats" id="stats">Round 0 / 10 · Accuracy 0%</div>
+
+<div class="grid-wrapper">
+<div class="game-grid" id="grid"></div>
+</div>
+
+<div class="game-actions">
+<button id="start">Start</button>
+<button id="skip" class="secondary">Skip Game →</button>
+<button id="next" class="secondary" disabled>Next Game →</button>
+</div>
+
+<p class="notice" id="message">Press Start when you're ready.</p>
+</main>
+</div>
+
+<script>
+const TOTAL=10, COUNT=12, CHANGE_DELAY=240;
+const grid=document.getElementById("grid");
+const stats=document.getElementById("stats");
+const message=document.getElementById("message");
+const start=document.getElementById("start");
+const skip=document.getElementById("skip");
+const next=document.getElementById("next");
+
+let round=0,hits=0,active=-1,running=false,locked=false;
+const cells=[];
+
+for(let i=0;i<COUNT;i++){
+  const b=document.createElement("button");
+  b.type="button";
+  b.className="grid-cell";
+  b.setAttribute("aria-label",`Circle ${i+1}`);
+  b.addEventListener("click",()=>{
+    track("Button Clicked","grid_cell",`Mini Game 1 Circle ${i+1}`);
+    if(!running||locked)return;
+    locked=true;
+    round++;
+    if(i===active){
+      hits++;
+      message.textContent="Correct. Find the next one.";
+      track("Mini Game 1 Hit","round",round);
+    }else{
+      message.textContent="Wrong one. 😭";
+      track("Mini Game 1 Miss","round",round);
+    }
+    update();
+    if(round>=TOTAL){finish();return;}
+    setTimeout(showTarget,CHANGE_DELAY);
+  });
+  grid.appendChild(b);
+  cells.push(b);
+}
+
+function acc(){return round?Math.round(hits/round*1000)/10:0;}
+function update(){stats.textContent=`Round ${round} / ${TOTAL} · Accuracy ${acc()}%`;}
+
+function showTarget(){
+  let i=Math.floor(Math.random()*COUNT);
+  while(COUNT>1 && i===active)i=Math.floor(Math.random()*COUNT);
+  cells.forEach(c=>{c.classList.remove("active");c.textContent="";});
+  active=i;
+  cells[i].classList.add("active");
+  cells[i].textContent="NO";
+  locked=false;
+}
+
+function finish(){
+  running=false;
+  start.disabled=true;
+  next.disabled=false;
+  const a=acc();
+  track("Mini Game 1 Complete","accuracy",`${a}%`);
+  track("Mini Game 1 Eligibility","result",a>=80?"Passed":"Not passed");
+  message.textContent=a>=80
+    ? `Final accuracy: ${a}%. You cleared it. 🎯`
+    : `Final accuracy: ${a}%. You can still continue.`;
+}
+
+start.addEventListener("click",()=>{
+  if(running)return;
+  track("Button Clicked","button","Start — Mini Game 1");
+  running=true;start.disabled=true;round=0;hits=0;update();message.textContent="Go.";showTarget();
+});
+
+skip.addEventListener("click",()=>{
+  track("Button Clicked","button","Skip Game — Mini Game 1");
+  location.href="game1c.html";
+});
+
+next.addEventListener("click",()=>{
+  if(next.disabled)return;
+  track("Button Clicked","button","Next Game — Mini Game 1");
+  location.href="game1c.html";
+});
+
+track("Game Opened","game","Mini Game 1");
+update();
+</script>
+</body>
+</html>

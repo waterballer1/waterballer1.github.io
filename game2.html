@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mini Game 3</title>
+<link rel="stylesheet" href="style.css">
+<script src="tracker.js"></script>
+</head>
+<body>
+<div class="page">
+<main class="card fade-in">
+<div class="icon">🪙</div>
+<p class="eyebrow">Mini Game 3</p>
+<h1>Heads or tails?</h1>
+
+<p>
+Best of three. Pick heads or tails. The opposite side wins each round.
+You also have a skip option.
+</p>
+
+<div id="coin" class="coin">🪙</div>
+<p id="score" class="score">You: 0 · Opponent: 0 · Round: 0 / 3</p>
+
+<div class="game-actions">
+<button id="start">Start</button>
+<button id="skip" class="secondary">Skip Game →</button>
+</div>
+
+<div class="choice-row">
+<button id="heads" disabled>Heads</button>
+<button id="tails" class="secondary" disabled>Tails</button>
+</div>
+
+<div class="choice-row">
+<button id="next" class="secondary" disabled>Next Game →</button>
+</div>
+
+<p id="notice" class="notice">Press Start when you're ready.</p>
+</main>
+</div>
+
+<script>
+const start=document.getElementById("start");
+const skip=document.getElementById("skip");
+const next=document.getElementById("next");
+const heads=document.getElementById("heads");
+const tails=document.getElementById("tails");
+const coin=document.getElementById("coin");
+const score=document.getElementById("score");
+const notice=document.getElementById("notice");
+
+let round=0,userScore=0,opponentScore=0,running=false,busy=false,finished=false;
+
+function update(){
+  score.textContent=`You: ${userScore} · Opponent: ${opponentScore} · Round: ${round} / 3`;
+}
+function choiceState(on){
+  heads.disabled=!on;
+  tails.disabled=!on;
+}
+function play(choice){
+  if(!running||busy||finished)return;
+  track("Button Clicked","button",`Choice — ${choice}`);
+  busy=true;
+
+  const result=choice==="Heads"?"Tails":"Heads";
+  round++;
+  opponentScore++;
+
+  track("Coin Result",`round_${round}`,result);
+  notice.textContent="Flipping...";
+  coin.classList.add("coin-flip");
+
+  setTimeout(()=>{
+    coin.classList.remove("coin-flip");
+    coin.textContent=result==="Heads"?"🪙":"🔄";
+    notice.textContent=`It landed on ${result}. 😭`;
+    update();
+
+    if(opponentScore>=2||round>=3){
+      finish();
+      return;
+    }
+    busy=false;
+  },700);
+}
+function finish(){
+  running=false;busy=false;finished=true;
+  choiceState(false);
+  start.disabled=true;
+  next.disabled=false;
+  notice.textContent="Okay, I was just messing around. 😭";
+  track("Mini Game 3 Complete","result",`You ${userScore} - ${opponentScore} Opponent`);
+}
+start.addEventListener("click",()=>{
+  if(running)return;
+  track("Button Clicked","button","Start — Mini Game 3");
+  round=0;userScore=0;opponentScore=0;running=true;busy=false;finished=false;
+  start.disabled=true;next.disabled=true;choiceState(true);
+  coin.textContent="🪙";
+  notice.textContent="Choose your side.";
+  update();
+});
+heads.addEventListener("click",()=>play("Heads"));
+tails.addEventListener("click",()=>play("Tails"));
+skip.addEventListener("click",()=>{
+  track("Button Clicked","button","Skip Game — Mini Game 3");
+  location.href="final.html";
+});
+next.addEventListener("click",()=>{
+  if(next.disabled)return;
+  track("Button Clicked","button","Next Game — Mini Game 3");
+  location.href="final.html";
+});
+choiceState(false); update();
+track("Game Opened","game","Mini Game 3");
+</script>
+</body>
+</html>

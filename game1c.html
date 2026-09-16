@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mini Game 2</title>
+<link rel="stylesheet" href="style.css">
+<script src="tracker.js"></script>
+</head>
+<body>
+<div class="page">
+<main class="card game-card fade-in">
+<div class="icon">🏁</div>
+<p class="eyebrow">Mini Game 2</p>
+<h1>Reaction test.</h1>
+
+<p>
+Wait until <b>NOW!</b> appears, then hit <b>CLICK</b> as quickly as possible.
+For this game, the F1-style benchmark is an average reaction time of
+<b>200 ms or less</b>.
+</p>
+
+<div class="reaction-area" id="reactionArea">
+<div id="reactionMessage">Press Start when you're ready.</div>
+<button id="reactionButton" class="reaction-button hidden" type="button">CLICK</button>
+</div>
+
+<div class="reaction-results">
+<div id="last">Last: —</div>
+<div id="best">Best: —</div>
+<div id="average">Average: —</div>
+</div>
+
+<div class="game-actions">
+<button id="start">Start</button>
+<button id="skip" class="secondary">Skip Game →</button>
+<button id="next" class="secondary" disabled>Next Game →</button>
+</div>
+
+<p class="notice" id="message"></p>
+</main>
+</div>
+
+<script>
+const ROUNDS=5, BENCHMARK=200;
+const msg=document.getElementById("reactionMessage");
+const btn=document.getElementById("reactionButton");
+const last=document.getElementById("last");
+const best=document.getElementById("best");
+const avg=document.getElementById("average");
+const start=document.getElementById("start");
+const skip=document.getElementById("skip");
+const next=document.getElementById("next");
+const message=document.getElementById("message");
+
+let round=0,times=[],running=false,ready=false,signal=0,timer=null;
+
+function beginRound(){
+  if(!running)return;
+  if(round>=ROUNDS){finish();return;}
+  round++;
+  ready=false;
+  btn.classList.add("hidden");
+  msg.textContent=`Round ${round} / ${ROUNDS} — wait...`;
+  timer=setTimeout(()=>{
+    if(!running)return;
+    ready=true;
+    signal=performance.now();
+    msg.textContent="NOW!";
+    btn.classList.remove("hidden");
+    track("Reaction Signal","round",round);
+  },900+Math.random()*1700);
+}
+
+btn.addEventListener("click",()=>{
+  track("Button Clicked","button","CLICK — Mini Game 2");
+  if(!running||!ready)return;
+
+  const t=Math.round(performance.now()-signal);
+  times.push(t);
+  ready=false;
+  btn.classList.add("hidden");
+
+  const b=Math.min(...times);
+  const a=Math.round(times.reduce((s,v)=>s+v,0)/times.length);
+  last.textContent=`Last: ${t} ms`;
+  best.textContent=`Best: ${b} ms`;
+  avg.textContent=`Average: ${a} ms`;
+  msg.textContent=`${t} ms`;
+
+  track("Reaction Time",`round_${round}`,`${t} ms`);
+
+  setTimeout(beginRound,800);
+});
+
+function finish(){
+  running=false;
+  clearTimeout(timer);
+  btn.classList.add("hidden");
+  start.disabled=true;
+  next.disabled=false;
+
+  const b=Math.min(...times);
+  const a=Math.round(times.reduce((s,v)=>s+v,0)/times.length);
+
+  track("Mini Game 2 Complete","average",`${a} ms`);
+  track("Mini Game 2 Best","best",`${b} ms`);
+  track("Mini Game 2 Eligibility","result",a<=BENCHMARK?"Passed":"Not passed");
+
+  message.textContent=a<=BENCHMARK
+    ? `Average: ${a} ms. You cleared the ${BENCHMARK} ms benchmark. 🏁`
+    : `Average: ${a} ms. You needed ${BENCHMARK} ms or less.`;
+}
+
+start.addEventListener("click",()=>{
+  if(running)return;
+  track("Button Clicked","button","Start — Mini Game 2");
+  running=true;start.disabled=true;next.disabled=true;
+  round=0;times=[];message.textContent="";
+  last.textContent="Last: —";best.textContent="Best: —";avg.textContent="Average: —";
+  beginRound();
+});
+
+skip.addEventListener("click",()=>{
+  track("Button Clicked","button","Skip Game — Mini Game 2");
+  clearTimeout(timer);
+  location.href="game2.html";
+});
+
+next.addEventListener("click",()=>{
+  if(next.disabled)return;
+  track("Button Clicked","button","Next Game — Mini Game 2");
+  location.href="game2.html";
+});
+
+track("Game Opened","game","Mini Game 2");
+</script>
+</body>
+</html>

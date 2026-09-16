@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Final Choice</title>
+<link rel="stylesheet" href="style.css">
+<script src="tracker.js"></script>
+</head>
+<body>
+<div class="page">
+<main class="card fade-in">
+<div class="icon">😭</div>
+<p class="eyebrow">Final, final</p>
+<h1>Okay, I was just messing around.</h1>
+<p>You can still click No, you're a creep.</p>
+
+<div class="choice-row">
+<button id="yes">Guess I'd be willing to talk</button>
+<button id="no" class="secondary">No, you're a creep</button>
+</div>
+</main>
+</div>
+
+<script>
+document.getElementById("yes").addEventListener("click",()=>{
+  track("Button Clicked","button","Guess I'd be willing to talk");
+  location.href="success.html";
+});
+document.getElementById("no").addEventListener("click",()=>{
+  track("Button Clicked","button","No, you're a creep");
+  location.href="last.html";
+});
+</script>
+</body>
+</html>

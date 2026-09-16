@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Actually, I'm out of websites.</title>
+<link rel="stylesheet" href="style.css">
+<script src="tracker.js"></script>
+</head>
+<body>
+<div class="page">
+<main class="card fade-in">
+<div class="icon">💀</div>
+<p class="eyebrow">Okay, okay.</p>
+<h1>Actually, I am out of websites.</h1>
+
+<p>
+I tried my best to convince you, but I think you should try out the
+Yes method. It has some pretty good things to do.
+</p>
+
+<div class="choice-row">
+<button id="yesMethod">Okay, try the Yes method →</button>
+</div>
+</main>
+</div>
+
+<script>
+document.getElementById("yesMethod").addEventListener("click",()=>{
+  track("Button Clicked","button","Try the Yes method");
+  location.href="success.html";
+});
+</script>
+</body>
+</html>
