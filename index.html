@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#ff4fa3">
+<title>Tamanna, One Tiny Request ✦</title>
+<style>
+:root{--pink:#ff4fa3;--yellow:#ffe45e;--blue:#54d9ff;--green:#c9ff57;--ink:#17151d;--paper:#fff8e8}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;background:var(--pink);color:var(--ink);font-family:ui-rounded,"Arial Rounded MT Bold",system-ui,sans-serif;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.14;z-index:-1;background-image:radial-gradient(#17151d 1px,transparent 1.5px);background-size:9px 9px}
+.wrap{width:min(1100px,92vw);margin:auto;padding:24px 0 70px}
+.topline{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap;font-weight:1000;text-transform:uppercase;letter-spacing:.08em;font-size:.78rem}
+.sticker{display:inline-block;background:var(--yellow);padding:9px 13px;border:3px solid var(--ink);box-shadow:4px 4px 0 var(--ink);transform:rotate(-2deg)}
+.hero{margin:30px 0 34px;position:relative;background:var(--paper);border:4px solid var(--ink);padding:clamp(24px,6vw,62px);box-shadow:10px 10px 0 var(--ink);transform:rotate(-.5deg)}
+h1{font-size:clamp(3rem,9vw,7.4rem);line-height:.86;letter-spacing:-.075em;margin:12px 0 22px;text-transform:uppercase}
+h1 .pink{color:var(--pink);text-shadow:3px 3px 0 var(--ink);-webkit-text-stroke:1px var(--ink)}
+.hero p{max-width:620px;font-size:clamp(1rem,2.5vw,1.25rem);font-weight:750;line-height:1.5}
+.doodle{position:absolute;right:4%;top:8%;font-size:clamp(3rem,9vw,6rem);transform:rotate(14deg);animation:wiggle 2.8s infinite}
+@keyframes wiggle{0%,100%{transform:rotate(14deg) scale(1)}50%{transform:rotate(24deg) scale(1.08)}}
+.marquee{background:var(--ink);color:var(--green);padding:12px 0;margin:0 -4vw 32px;overflow:hidden;white-space:nowrap;font-weight:1000;text-transform:uppercase;letter-spacing:.08em}
+.marquee span{display:inline-block;animation:slide 22s linear infinite}
+@keyframes slide{to{transform:translateX(-35%)}}
+.sectionhead{display:flex;align-items:end;justify-content:space-between;gap:15px;flex-wrap:wrap;margin:34px 0 16px}
+.sectionhead h2{font-size:clamp(2rem,5vw,3.7rem);line-height:.9;margin:0;text-transform:uppercase;letter-spacing:-.06em}
+.sectionhead small{font-weight:900;background:var(--blue);padding:7px 10px;border:2px solid var(--ink);transform:rotate(2deg)}
+.games{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.card{position:relative;background:var(--paper);border:3px solid var(--ink);padding:22px;box-shadow:7px 7px 0 var(--ink);min-width:0}
+.card:nth-child(2){background:var(--yellow);transform:rotate(.5deg)}
+.card:nth-child(3){background:var(--blue);transform:rotate(-.4deg)}
+.card:nth-child(4){background:var(--green);transform:rotate(.4deg)}
+.card h3{font-size:1.7rem;text-transform:uppercase;letter-spacing:-.04em;margin:0 0 8px}
+.card p{font-weight:650;line-height:1.45}
+.tag{display:inline-block;font-size:.75rem;font-weight:1000;text-transform:uppercase;background:var(--ink);color:white;padding:5px 8px;margin-bottom:10px}
+button,.button{border:3px solid var(--ink);background:var(--pink);color:var(--ink);font:inherit;font-weight:1000;padding:12px 15px;box-shadow:4px 4px 0 var(--ink);cursor:pointer;transition:transform .12s,box-shadow .12s;text-decoration:none;display:inline-block}
+button:hover,.button:hover{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
+button:active{transform:translate(4px,4px);box-shadow:none}
+button:focus-visible,.button:focus-visible{outline:4px dashed white;outline-offset:4px}
+button:disabled{opacity:.55;cursor:not-allowed}
+.bigbutton{width:100%;min-height:145px;margin:12px 0;font-size:clamp(1.2rem,4vw,2rem);background:#fff}
+.bigbutton.waiting{background:#ff5c54;color:#fff}
+.bigbutton.go{background:#75ff89}
+.result{font-weight:1000;min-height:28px;margin:12px 0 0}
+.sequence-board{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:15px 0}
+.tile{aspect-ratio:1;background:var(--paper);border:3px solid var(--ink);box-shadow:3px 3px 0 var(--ink);font-size:clamp(1.5rem,5vw,2.5rem);display:grid;place-items:center;cursor:pointer;user-select:none}
+.tile.lit{background:var(--pink);transform:scale(.94);box-shadow:0 0 0 5px white}
+.tile:disabled{opacity:1}
+.starfield{min-height:180px;border:3px dashed var(--ink);background:#1a1730;position:relative;overflow:hidden;margin:15px 0;color:white}
+.star{position:absolute;border:0;background:transparent;color:#fff;font-size:1.65rem;padding:0;box-shadow:none;line-height:1;animation:twinkle 1.2s infinite alternate}
+.star:hover{box-shadow:none;transform:scale(1.4)}
+@keyframes twinkle{to{filter:drop-shadow(0 0 8px #ffe45e);opacity:.7}}
+.meter{font-weight:1000;background:#fff;padding:10px;border:2px solid var(--ink);margin:12px 0}
+.note{font-size:.82rem;font-weight:700;opacity:.8}
+.footer{margin-top:40px;background:var(--ink);color:white;padding:25px;border:3px solid white;box-shadow:7px 7px 0 var(--yellow);transform:rotate(-.3deg)}
+.footer h2{font-size:clamp(2rem,5vw,3rem);line-height:.95;margin:0 0 12px;color:var(--yellow);text-transform:uppercase}
+.footer p{max-width:680px;line-height:1.5}
+.footer .button{background:var(--green)}
+.tiny{font-size:.75rem;opacity:.75;margin-top:18px}
+@media(max-width:720px){.games{grid-template-columns:1fr}.hero{padding:28px 22px}.doodle{top:auto;bottom:12px;right:18px}.hero p{max-width:85%}.card{transform:none!important}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition:none!important}}
+
+/* Phone-first polish: large tap targets, calmer spacing, and no sideways scrolling. */
+html, body { width: 100%; max-width: 100%; }
+body { -webkit-text-size-adjust: 100%; }
+button, .button { touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+@media (max-width: 600px) {
+  .wrap {
+    width: auto;
+    margin: 0;
+    padding: max(14px, env(safe-area-inset-top)) 14px max(34px, env(safe-area-inset-bottom));
+  }
+  .topline {
+    align-items: flex-start;
+    gap: 12px;
+    font-size: .68rem;
+    line-height: 1.35;
+  }
+  .sticker { padding: 8px 10px; max-width: 62%; }
+  .hero {
+    margin: 22px 0 26px;
+    padding: 26px 19px 30px;
+    border-width: 3px;
+    box-shadow: 6px 6px 0 var(--ink);
+    transform: none;
+  }
+  h1 {
+    font-size: clamp(3.25rem, 16vw, 5.6rem);
+    line-height: .88;
+    margin: 14px 0 20px;
+    overflow-wrap: anywhere;
+  }
+  .hero p { font-size: 1rem; line-height: 1.55; max-width: 100%; }
+  .doodle { font-size: 2.6rem; right: 13px; top: 12px; }
+  .hero .tag { max-width: 78%; line-height: 1.3; }
+  .marquee { margin: 0 -14px 27px; padding: 10px 0; font-size: .83rem; }
+  .sectionhead { margin: 28px 0 17px; align-items: flex-start; }
+  .sectionhead h2 { font-size: clamp(2.15rem, 10vw, 3.1rem); }
+  .sectionhead small { font-size: .7rem; }
+  .games { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+  .card, .card:nth-child(n) {
+    padding: 19px 17px;
+    border-width: 3px;
+    box-shadow: 5px 5px 0 var(--ink);
+    transform: none;
+    min-width: 0;
+  }
+  .card h3 { font-size: 1.55rem; line-height: 1.05; }
+  .card p { font-size: .98rem; line-height: 1.5; }
+  button, .button {
+    min-height: 48px;
+    padding: 12px 14px;
+    font-size: 1rem;
+    max-width: 100%;
+  }
+  .bigbutton {
+    min-height: 124px;
+    padding: 18px 12px;
+    font-size: clamp(1.15rem, 6vw, 1.65rem);
+    line-height: 1.15;
+    overflow-wrap: anywhere;
+  }
+  .sequence-board { gap: 8px; margin: 16px 0; }
+  .tile {
+    min-width: 0;
+    min-height: 72px;
+    border-width: 2px;
+    box-shadow: 2px 2px 0 var(--ink);
+    font-size: 2rem;
+  }
+  .starfield { min-height: 205px; border-width: 2px; }
+  .star { min-width: 42px; min-height: 42px; display: grid; place-items: center; font-size: 1.6rem; }
+  .meter { font-size: .95rem; line-height: 1.35; }
+  .result { font-size: .98rem; line-height: 1.45; overflow-wrap: anywhere; }
+  .note { line-height: 1.45; }
+  .footer {
+    margin-top: 30px;
+    padding: 21px 17px;
+    border-width: 2px;
+    box-shadow: 5px 5px 0 var(--yellow);
+    transform: none;
+  }
+  .footer h2 { font-size: clamp(2.2rem, 10vw, 3.2rem); }
+  .footer p { font-size: .98rem; line-height: 1.55; }
+}
+@media (max-width: 360px) {
+  .wrap { padding-left: 11px; padding-right: 11px; }
+  .hero { padding-left: 15px; padding-right: 15px; }
+  .card, .card:nth-child(n) { padding: 16px 13px; }
+  .tile { min-height: 64px; }
+  .sectionhead { display: block; }
+  .sectionhead small { display: inline-block; margin-top: 10px; }
+}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topline"><span class="sticker">A very serious research project™</span><span>Issue #001 · Tamanna edition ✦</span></div>
+  <header class="hero">
+    <div class="doodle" aria-hidden="true">✦💫</div>
+    <div class="tag">Important-ish announcement</div>
+    <h1>Tamanna,<br><span class="pink">one tiny</span><br>request.</h1>
+    <p>I made you a tiny arcade instead of just saying “hey, could you accept my follow request?” Because apparently I have free time and a questionable sense of presentation.</p>
+    <p><strong>Mission:</strong> play a few mini-games. <strong>Prize:</strong> absolutely no pressure. Accept the request only if you actually want to. 🤝</p>
+  </header>
+  <div class="marquee"><span>✦ SEQUENCE ✦ STARS ✦ REFLEXES ✦ VERY IMPORTANT SCIENCE ✦ SEQUENCE ✦ STARS ✦ REFLEXES ✦ VERY IMPORTANT SCIENCE ✦ </span></div>
+
+  <div class="sectionhead"><h2>The tiny arcade</h2><small>3 games · 0 obligations</small></div>
+  <main class="games">
+    <section class="card">
+      <div class="tag">Game 01 · Reflexes</div>
+      <h3>F1 reaction test 🏎️</h3>
+      <p>Wait for the lights to turn green, then hit the button as fast as you can. Jumping the start = false start, racer.</p>
+      <button id="reactionBtn" class="bigbutton">START YOUR ENGINE</button>
+      <div id="reactionResult" class="result" aria-live="polite">Ready when you are.</div>
+      <p class="note">Tip: don't click while the lights are red. The stewards are watching.</p>
+    </section>
+    <section class="card">
+      <div class="tag">Game 02 · Memory</div>
+      <h3>Sequence of stars ✨</h3>
+      <p>Watch the stars light up, then repeat the sequence in the same order. Every round adds one more star.</p>
+      <div class="meter" id="sequenceStatus" aria-live="polite">Round 1 · Ready?</div>
+      <div class="sequence-board" id="sequenceBoard" aria-label="Star sequence buttons"></div>
+      <button id="sequenceStart">PLAY SEQUENCE</button>
+      <div id="sequenceResult" class="result" aria-live="polite">Can you remember the pattern?</div>
+    </section>
+    <section class="card">
+      <div class="tag">Game 03 · Star hunt</div>
+      <h3>Catch the stars 🌟</h3>
+      <p>Tap 5 stars before they disappear into the dramatic void. This is definitely a scientifically valid test of star-catching abilities.</p>
+      <div class="starfield" id="starfield" aria-label="Star-catching game area"><span style="position:absolute;inset:12px;display:grid;place-items:center;text-align:center;font-weight:900">The galaxy is waiting…</span></div>
+      <button id="starStart">START STAR HUNT</button>
+      <div id="starResult" class="result" aria-live="polite">Stars caught: 0 / 5</div>
+    </section>
+    <section class="card">
+      <div class="tag">Bonus · Extremely official</div>
+      <h3>Request status 📬</h3>
+      <p>Choose your current vibe. This button does not send anything to Instagram or change your account — it is just for the bit.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:10px">
+        <a class="button" href="eyes.html">Yes</a>
+        <a class="button" href="eyes.html">No</a>
+        <a class="button" href="eyes.html">I’ll think about it</a>
+      </div>
+      <div class="result">Whatever you choose, the plot continues… 👀</div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="tag">End of transmission</div>
+    <h2>That’s the whole pitch.</h2>
+    <p>Anyway, Tamanna, if you feel like accepting my follow request, cool. If not, no hard feelings — the mini-games will survive this devastating plot twist.</p>
+    <p><strong>Thank you for visiting the Tamanna Arcade™.</strong> Please collect your imaginary trophy on the way out. 🏆</p>
+    <div class="tiny">Made with stars, questionable ambition, and a deeply unnecessary amount of CSS.</div>
+  </footer>
+</div>
+<script>
+const reactionBtn=document.getElementById('reactionBtn'), reactionResult=document.getElementById('reactionResult');
+let reactionState='idle', goAt=0, timer=null;
+reactionBtn.addEventListener('click',()=>{
+  if(reactionState==='idle'||reactionState==='done'){
+    reactionState='waiting'; reactionBtn.className='bigbutton waiting'; reactionBtn.textContent='🔴 🔴 🔴 WAIT FOR GREEN'; reactionResult.textContent='Lights out… not yet!'; reactionBtn.disabled=false;
+    timer=setTimeout(()=>{if(reactionState==='waiting'){reactionState='go';goAt=performance.now();reactionBtn.className='bigbutton go';reactionBtn.textContent='🟢 GO GO GO!';reactionResult.textContent='NOW! NOW! NOW!';}},1200+Math.random()*2800);
+  }else if(reactionState==='waiting'){
+    clearTimeout(timer);reactionState='done';reactionBtn.className='bigbutton';reactionBtn.textContent='TRY AGAIN';reactionResult.textContent='FALSE START! 😭 The stewards have issued a dramatic warning.';
+  }else if(reactionState==='go'){
+    const ms=Math.round(performance.now()-goAt);reactionState='done';reactionBtn.className='bigbutton';reactionBtn.textContent='RACE AGAIN';reactionResult.textContent=`${ms} ms — ${ms<220?'F1 DRIVER?!':ms<300?'Pretty quick!':ms<450?'Solid reaction.':'The lights had a head start 😭'}`;
+  }
+});
+
+const board=document.getElementById('sequenceBoard'), sequenceStatus=document.getElementById('sequenceStatus'), sequenceResult=document.getElementById('sequenceResult'), sequenceStart=document.getElementById('sequenceStart');
+const symbols=['✦','★','✧','✷','✹','✵','✺','✴','✳'];
+let pattern=[], userPattern=[], round=1, sequenceBusy=false;
+for(let i=0;i<9;i++){const b=document.createElement('button');b.className='tile';b.textContent='✦';b.setAttribute('aria-label',`Star ${i+1}`);b.addEventListener('click',()=>pickTile(i));board.appendChild(b)}
+const tiles=[...board.children];
+function sleep(ms){return new Promise(r=>setTimeout(r,ms))}
+async function showPattern(){sequenceBusy=true;sequenceStart.disabled=true;tiles.forEach(t=>t.disabled=true);sequenceResult.textContent='Watch closely…';await sleep(350);
+ for(const n of pattern){tiles[n].classList.add('lit');tiles[n].textContent='🌟';await sleep(520);tiles[n].classList.remove('lit');tiles[n].textContent='✦';await sleep(220)}
+ sequenceBusy=false;tiles.forEach(t=>t.disabled=false);sequenceStart.disabled=false;sequenceResult.textContent='Your turn — repeat the stars!'}
+sequenceStart.addEventListener('click',()=>{pattern=[];userPattern=[];round=1;nextRound()});
+async function nextRound(){userPattern=[];pattern.push(Math.floor(Math.random()*9));sequenceStatus.textContent=`Round ${round} · ${pattern.length} star${pattern.length===1?'':'s'}`;await showPattern()}
+async function pickTile(i){if(sequenceBusy||sequenceStart.disabled)return;userPattern.push(i);tiles[i].classList.add('lit');tiles[i].textContent='✨';setTimeout(()=>{tiles[i].classList.remove('lit');tiles[i].textContent='✦'},180);
+ const idx=userPattern.length-1;if(userPattern[idx]!==pattern[idx]){sequenceResult.textContent=`Almost! You reached round ${round}. The stars are mysterious like that. 🌌`;sequenceStart.textContent='TRY AGAIN';tiles.forEach(t=>t.disabled=true);return}
+ if(userPattern.length===pattern.length){if(round>=8){sequenceResult.textContent='8 rounds cleared! Official star-memory legend. 🏆';sequenceStart.textContent='PLAY AGAIN';tiles.forEach(t=>t.disabled=true);return}round++;sequenceResult.textContent='Correct! Next round…';tiles.forEach(t=>t.disabled=true);setTimeout(nextRound,650)}}
+const starfield=document.getElementById('starfield'), starStart=document.getElementById('starStart'), starResult=document.getElementById('starResult');
+let caught=0, starTimer=null, starRunning=false;
+starStart.addEventListener('click',()=>{clearInterval(starTimer);caught=0;starRunning=true;starStart.disabled=true;starfield.innerHTML='';starResult.textContent='Stars caught: 0 / 5';spawnStar();starTimer=setInterval(()=>{if(starRunning)spawnStar()},720);setTimeout(()=>{if(starRunning){starRunning=false;clearInterval(starTimer);starfield.innerHTML='<span style="position:absolute;inset:12px;display:grid;place-items:center;text-align:center;font-weight:900;color:white">THE GALAXY HAS LOGGED OFF 🌌</span>';starResult.textContent=`Time! You caught ${caught} / 5 stars.`;starStart.disabled=false}},8000)});
+function spawnStar(){if(!starRunning)return;const s=document.createElement('button');s.className='star';s.textContent=['✦','★','✧','🌟'][Math.floor(Math.random()*4)];s.style.left=(4+Math.random()*84)+'%';s.style.top=(5+Math.random()*70)+'%';s.setAttribute('aria-label','Catch star');s.addEventListener('click',()=>{if(!starRunning)return;caught++;s.remove();starResult.textContent=`Stars caught: ${caught} / 5`;if(caught>=5){starRunning=false;clearInterval(starTimer);starfield.innerHTML='<span style="position:absolute;inset:12px;display:grid;place-items:center;text-align:center;font-weight:900;color:white">GALAXY SECURED ✨🏆</span>';starResult.textContent='5 / 5 — star-catching legend!';starStart.disabled=false}});starfield.appendChild(s);setTimeout(()=>s.remove(),1100)}
+
+</script>
+</body>
+</html>

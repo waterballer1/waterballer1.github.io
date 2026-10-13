@@ -1,0 +1,149 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#ff4fa3"><title>Side Quest Unlocked ✦</title><style>
+:root{--pink:#ff4fa3;--yellow:#ffe45e;--blue:#54d9ff;--green:#c9ff57;--ink:#17151d;--paper:#fff8e8}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;background:var(--pink);color:var(--ink);font-family:ui-rounded,"Arial Rounded MT Bold",system-ui,sans-serif;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.14;z-index:-1;background-image:radial-gradient(#17151d 1px,transparent 1.5px);background-size:9px 9px}
+.wrap{width:min(1100px,92vw);margin:auto;padding:24px 0 70px}
+.topline{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap;font-weight:1000;text-transform:uppercase;letter-spacing:.08em;font-size:.78rem}
+.sticker{display:inline-block;background:var(--yellow);padding:9px 13px;border:3px solid var(--ink);box-shadow:4px 4px 0 var(--ink);transform:rotate(-2deg)}
+.hero{margin:30px 0 34px;position:relative;background:var(--paper);border:4px solid var(--ink);padding:clamp(24px,6vw,62px);box-shadow:10px 10px 0 var(--ink);transform:rotate(-.5deg)}
+h1{font-size:clamp(3rem,9vw,7.4rem);line-height:.86;letter-spacing:-.075em;margin:12px 0 22px;text-transform:uppercase}
+h1 .pink{color:var(--pink);text-shadow:3px 3px 0 var(--ink);-webkit-text-stroke:1px var(--ink)}
+.hero p{max-width:620px;font-size:clamp(1rem,2.5vw,1.25rem);font-weight:750;line-height:1.5}
+.doodle{position:absolute;right:4%;top:8%;font-size:clamp(3rem,9vw,6rem);transform:rotate(14deg);animation:wiggle 2.8s infinite}
+@keyframes wiggle{0%,100%{transform:rotate(14deg) scale(1)}50%{transform:rotate(24deg) scale(1.08)}}
+.marquee{background:var(--ink);color:var(--green);padding:12px 0;margin:0 -4vw 32px;overflow:hidden;white-space:nowrap;font-weight:1000;text-transform:uppercase;letter-spacing:.08em}
+.marquee span{display:inline-block;animation:slide 22s linear infinite}
+@keyframes slide{to{transform:translateX(-35%)}}
+.sectionhead{display:flex;align-items:end;justify-content:space-between;gap:15px;flex-wrap:wrap;margin:34px 0 16px}
+.sectionhead h2{font-size:clamp(2rem,5vw,3.7rem);line-height:.9;margin:0;text-transform:uppercase;letter-spacing:-.06em}
+.sectionhead small{font-weight:900;background:var(--blue);padding:7px 10px;border:2px solid var(--ink);transform:rotate(2deg)}
+.games{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.card{position:relative;background:var(--paper);border:3px solid var(--ink);padding:22px;box-shadow:7px 7px 0 var(--ink);min-width:0}
+.card:nth-child(2){background:var(--yellow);transform:rotate(.5deg)}
+.card:nth-child(3){background:var(--blue);transform:rotate(-.4deg)}
+.card:nth-child(4){background:var(--green);transform:rotate(.4deg)}
+.card h3{font-size:1.7rem;text-transform:uppercase;letter-spacing:-.04em;margin:0 0 8px}
+.card p{font-weight:650;line-height:1.45}
+.tag{display:inline-block;font-size:.75rem;font-weight:1000;text-transform:uppercase;background:var(--ink);color:white;padding:5px 8px;margin-bottom:10px}
+button,.button{border:3px solid var(--ink);background:var(--pink);color:var(--ink);font:inherit;font-weight:1000;padding:12px 15px;box-shadow:4px 4px 0 var(--ink);cursor:pointer;transition:transform .12s,box-shadow .12s;text-decoration:none;display:inline-block}
+button:hover,.button:hover{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
+button:active{transform:translate(4px,4px);box-shadow:none}
+button:focus-visible,.button:focus-visible{outline:4px dashed white;outline-offset:4px}
+button:disabled{opacity:.55;cursor:not-allowed}
+.bigbutton{width:100%;min-height:145px;margin:12px 0;font-size:clamp(1.2rem,4vw,2rem);background:#fff}
+.bigbutton.waiting{background:#ff5c54;color:#fff}
+.bigbutton.go{background:#75ff89}
+.result{font-weight:1000;min-height:28px;margin:12px 0 0}
+.sequence-board{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:15px 0}
+.tile{aspect-ratio:1;background:var(--paper);border:3px solid var(--ink);box-shadow:3px 3px 0 var(--ink);font-size:clamp(1.5rem,5vw,2.5rem);display:grid;place-items:center;cursor:pointer;user-select:none}
+.tile.lit{background:var(--pink);transform:scale(.94);box-shadow:0 0 0 5px white}
+.tile:disabled{opacity:1}
+.starfield{min-height:180px;border:3px dashed var(--ink);background:#1a1730;position:relative;overflow:hidden;margin:15px 0;color:white}
+.star{position:absolute;border:0;background:transparent;color:#fff;font-size:1.65rem;padding:0;box-shadow:none;line-height:1;animation:twinkle 1.2s infinite alternate}
+.star:hover{box-shadow:none;transform:scale(1.4)}
+@keyframes twinkle{to{filter:drop-shadow(0 0 8px #ffe45e);opacity:.7}}
+.meter{font-weight:1000;background:#fff;padding:10px;border:2px solid var(--ink);margin:12px 0}
+.note{font-size:.82rem;font-weight:700;opacity:.8}
+.footer{margin-top:40px;background:var(--ink);color:white;padding:25px;border:3px solid white;box-shadow:7px 7px 0 var(--yellow);transform:rotate(-.3deg)}
+.footer h2{font-size:clamp(2rem,5vw,3rem);line-height:.95;margin:0 0 12px;color:var(--yellow);text-transform:uppercase}
+.footer p{max-width:680px;line-height:1.5}
+.footer .button{background:var(--green)}
+.tiny{font-size:.75rem;opacity:.75;margin-top:18px}
+@media(max-width:720px){.games{grid-template-columns:1fr}.hero{padding:28px 22px}.doodle{top:auto;bottom:12px;right:18px}.hero p{max-width:85%}.card{transform:none!important}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition:none!important}}
+
+/* Phone-first polish: large tap targets, calmer spacing, and no sideways scrolling. */
+html, body { width: 100%; max-width: 100%; }
+body { -webkit-text-size-adjust: 100%; }
+button, .button { touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+@media (max-width: 600px) {
+  .wrap {
+    width: auto;
+    margin: 0;
+    padding: max(14px, env(safe-area-inset-top)) 14px max(34px, env(safe-area-inset-bottom));
+  }
+  .topline {
+    align-items: flex-start;
+    gap: 12px;
+    font-size: .68rem;
+    line-height: 1.35;
+  }
+  .sticker { padding: 8px 10px; max-width: 62%; }
+  .hero {
+    margin: 22px 0 26px;
+    padding: 26px 19px 30px;
+    border-width: 3px;
+    box-shadow: 6px 6px 0 var(--ink);
+    transform: none;
+  }
+  h1 {
+    font-size: clamp(3.25rem, 16vw, 5.6rem);
+    line-height: .88;
+    margin: 14px 0 20px;
+    overflow-wrap: anywhere;
+  }
+  .hero p { font-size: 1rem; line-height: 1.55; max-width: 100%; }
+  .doodle { font-size: 2.6rem; right: 13px; top: 12px; }
+  .hero .tag { max-width: 78%; line-height: 1.3; }
+  .marquee { margin: 0 -14px 27px; padding: 10px 0; font-size: .83rem; }
+  .sectionhead { margin: 28px 0 17px; align-items: flex-start; }
+  .sectionhead h2 { font-size: clamp(2.15rem, 10vw, 3.1rem); }
+  .sectionhead small { font-size: .7rem; }
+  .games { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+  .card, .card:nth-child(n) {
+    padding: 19px 17px;
+    border-width: 3px;
+    box-shadow: 5px 5px 0 var(--ink);
+    transform: none;
+    min-width: 0;
+  }
+  .card h3 { font-size: 1.55rem; line-height: 1.05; }
+  .card p { font-size: .98rem; line-height: 1.5; }
+  button, .button {
+    min-height: 48px;
+    padding: 12px 14px;
+    font-size: 1rem;
+    max-width: 100%;
+  }
+  .bigbutton {
+    min-height: 124px;
+    padding: 18px 12px;
+    font-size: clamp(1.15rem, 6vw, 1.65rem);
+    line-height: 1.15;
+    overflow-wrap: anywhere;
+  }
+  .sequence-board { gap: 8px; margin: 16px 0; }
+  .tile {
+    min-width: 0;
+    min-height: 72px;
+    border-width: 2px;
+    box-shadow: 2px 2px 0 var(--ink);
+    font-size: 2rem;
+  }
+  .starfield { min-height: 205px; border-width: 2px; }
+  .star { min-width: 42px; min-height: 42px; display: grid; place-items: center; font-size: 1.6rem; }
+  .meter { font-size: .95rem; line-height: 1.35; }
+  .result { font-size: .98rem; line-height: 1.45; overflow-wrap: anywhere; }
+  .note { line-height: 1.45; }
+  .footer {
+    margin-top: 30px;
+    padding: 21px 17px;
+    border-width: 2px;
+    box-shadow: 5px 5px 0 var(--yellow);
+    transform: none;
+  }
+  .footer h2 { font-size: clamp(2.2rem, 10vw, 3.2rem); }
+  .footer p { font-size: .98rem; line-height: 1.55; }
+}
+@media (max-width: 360px) {
+  .wrap { padding-left: 11px; padding-right: 11px; }
+  .hero { padding-left: 15px; padding-right: 15px; }
+  .card, .card:nth-child(n) { padding: 16px 13px; }
+  .tile { min-height: 64px; }
+  .sectionhead { display: block; }
+  .sectionhead small { display: inline-block; margin-top: 10px; }
+}
+
+
+.page-card{max-width:760px;margin:8vh auto 0;background:var(--paper);border:4px solid var(--ink);padding:clamp(24px,6vw,58px);box-shadow:9px 9px 0 var(--ink)}.page-card h1{font-size:clamp(2.8rem,10vw,6.2rem);line-height:.9;margin:16px 0 22px}.page-card p{font-size:clamp(1rem,3vw,1.25rem);line-height:1.55;font-weight:750}.page-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}@media(max-width:600px){.page-card{margin:6vh 0 0;padding:25px 19px;border-width:3px;box-shadow:6px 6px 0 var(--ink)}.page-card h1{font-size:clamp(2.8rem,13vw,4.5rem)}.page-actions{display:grid;grid-template-columns:1fr}.page-actions .button{text-align:center;width:100%}}</style></head><body><div class="wrap"><div class="topline"><span class="sticker">Totally Separate Department™</span><span>Side quest unlocked ✦</span></div><main class="page-card"><div class="tag">You have unlocked a side quest</div><h1>WAIT.<br>Before you go…</h1><p>Welcome to the Pretty-Eyes Department. Completely unrelated to the arcade. Extremely legitimate. Definitely not a suspiciously specific research project.</p><div style="background:var(--yellow);border:3px solid var(--ink);padding:18px;margin:22px 0;box-shadow:4px 4px 0 var(--ink);transform:rotate(-.6deg)"><div class="tag">One very important question</div><p style="font-size:clamp(1.25rem,4.5vw,2rem);line-height:1.2;margin:4px 0">Do you know the pros and cons of having pretty eyes? 👀</p></div><p style="font-size:.9rem;opacity:.8">Please continue to the totally unbiased findings.</p><div class="page-actions"><a class="button" href="cons.html">WHAT? SHOW ME THE EVIDENCE →</a><a class="button" href="index.html">BACK TO THE ARCADE</a></div></main></div></body></html>
